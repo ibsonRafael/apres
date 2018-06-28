@@ -1,0 +1,12 @@
+<div style="background-color: #8ac480; padding: 10px;">
+  <div><strong>acoes.acoes.component</strong></div>
+  <p>
+    Ações home works!
+  </p>
+
+  <button type="button" (click)="handleExibirTaxa()">Exibir taxa IR</button>
+  <app-filtro-acoes (valorChange)="handleValorChange($event)" [qtdeLocalizada]="acoesFiltrados?.length"></app-filtro-acoes>
+
+  <app-acoes-lista [acoes]="acoesFiltrados" [exibirTaxa]="exibirTaxaIR"></app-acoes-lista>
+  <router-outlet></router-outlet>
+</div>

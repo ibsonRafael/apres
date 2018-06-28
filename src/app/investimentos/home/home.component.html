@@ -1,0 +1,11 @@
+<div style="background-color: #8ac480; padding: 10px;">
+  <div><strong>investimentos.home.component</strong></div>
+
+  <div *ngIf="_investimentos$ | async as investimentos">
+    <div *ngIf="investimentos.loading">Carregando...</div>
+    <p *ngFor="let investimento of investimentos.data">
+      Investimentos home works! {{investimento.nome}} {{investimento.taxa}}
+    </p>
+  </div>
+
+</div>

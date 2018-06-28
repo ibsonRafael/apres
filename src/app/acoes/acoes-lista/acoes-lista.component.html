@@ -1,0 +1,15 @@
+<div style="background-color: #b6c458; padding: 10px;">
+  <div><strong>acoes.acoes-lista.component</strong></div>
+  <table>
+    <tr>
+      <td>Nome</td>
+      <td *ngIf="exibirTaxa">Taxa IR</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr *ngFor="let item of acoes">
+      <td>{{item.nome}}</td>
+      <td *ngIf="exibirTaxa">{{item.taxa}}</td>
+      <td><button type="button" [routerLink]="['detalhes']">Detalhes</button></td>
+    </tr>
+  </table>
+</div>

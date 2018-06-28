@@ -1,0 +1,12 @@
+<div style="background-color: #8ac480; padding: 10px;">
+  <div><strong>fundos.home.component</strong></div>
+  <p>
+    Fundos home works!
+  </p>
+
+  <button type="button" (click)="handleExibirTaxa()">Exibir taxa IR</button>
+  <app-filtro-fundos (valorChange)="handleValorChange($event)" [qtdeLocalizada]="fundosFiltrados?.length"></app-filtro-fundos>
+
+  <app-fundos-lista [fundos]="fundosFiltrados" [exibirTaxa]="exibirTaxaIR"></app-fundos-lista>
+  <router-outlet></router-outlet>
+</div>
