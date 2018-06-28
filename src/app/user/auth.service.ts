@@ -14,4 +14,8 @@ export class AuthService {
     }
     return false;
   }
+
+  getUser(): any {
+    return {user:'usuario', guid: '343-4343-4343'};
+  }
 }

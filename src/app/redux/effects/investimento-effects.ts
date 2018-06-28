@@ -37,48 +37,48 @@ export class InvestimentoEffects {
       // return Observable.of(null);
       return this._investimentoApiService.getInvestimento(state)
         .map( response => {
-          const payload = response;
+          const payload = {...response, user: this._authService.getUser()};
           return new investimentoActions.GetInvestimentosSuccess(payload);
         } )
         .catch( error => of( new investimentoActions.GetInvestimentosFail(error) ) );
     });
 
-  /** Spliter **/
-  @Effect()
-  insereInvestimento: Observable<Action> = this.actions.ofType(investimentoActions.INSERT_INVESTIMENTO)
-    .flatMap(
-      item => [
-        {type: investimentoActions.ADD_LOG, payload: item},
-        {type: investimentoActions.INSERT_INVESTIMENTO_API, payload: item},
-      ]
-    );
+  // /** Spliter **/
+  // @Effect()
+  // insereInvestimento: Observable<Action> = this.actions.ofType(investimentoActions.INSERT_INVESTIMENTO)
+  //   .flatMap(
+  //     item => [
+  //       {type: investimentoActions.ADD_LOG, payload: item},
+  //       {type: investimentoActions.INSERT_INVESTIMENTO_API, payload: item},
+  //     ]
+  //   );
 
 
-  /** Content based **/
-  @Effect()
-  getSalvaInvestimento: Observable<Action> = this.actions.ofType(investimentoActions.SAVE_INVESTIMENTO)
-    .map(
-      item => {
-        if(item.id == null) {
-          return ({type: investimentoActions.INSERT_INVESTIMENTO, payload: item});
-        } else {
-          return ({type: investimentoActions.UPDATE_INVESTIMENTO, payload: item});
-        }
-      }
-    );
+  // /** Content based **/
+  // @Effect()
+  // getSalvaInvestimento: Observable<Action> = this.actions.ofType(investimentoActions.SAVE_INVESTIMENTO)
+  //   .map(
+  //     item => {
+  //       if(item.id == null) {
+  //         return ({type: investimentoActions.INSERT_INVESTIMENTO, payload: item});
+  //       } else {
+  //         return ({type: investimentoActions.UPDATE_INVESTIMENTO, payload: item});
+  //       }
+  //     }
+  //   );
 
-  /** Context based **/
-  @Effect()
-  getSalvaLogs: Observable<Action> = this.actions.ofType(investimentoActions.ADD_LOG)
-    .map(
-      item => {
-        if(this._authService.isLoggedIn()) {
-          return ({type: investimentoActions.ADD_LOG_USER, payload: item});
-        } else {
-          return ({type: investimentoActions.ADD_LOG_GUEST, payload: item});
-        }
-      }
-    );
+  // /** Context based **/
+  // @Effect()
+  // getSalvaLogs: Observable<Action> = this.actions.ofType(investimentoActions.ADD_LOG)
+  //   .map(
+  //     item => {
+  //       if(this._authService.isLoggedIn()) {
+  //         return ({type: investimentoActions.ADD_LOG_USER, payload: item});
+  //       } else {
+  //         return ({type: investimentoActions.ADD_LOG_GUEST, payload: item});
+  //       }
+  //     }
+  //   );
 
 
   // /** Aggregator **/

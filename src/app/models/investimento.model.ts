@@ -1,7 +1,9 @@
 export interface IInvestimento {
-  id?: number;
-  nome?: string;
-  taxa?: string;
+  id?: any;
+  nome?: any;
+  taxa?: any;
+
+  user?: any;
 
   loading: boolean;
   data: Array<any>;
